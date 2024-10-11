@@ -16,7 +16,6 @@ export const useStudentStore = defineStore("useStudentStore", {
       this.loading = true;
       $http("/admin/users", {
         params: {
-          role_id: 1,
           ...useRoute().query,
         },
       })

@@ -46,6 +46,7 @@
         </NuxtLink>
 
         <NuxtLink
+          v-if="false"
           class="nav-link tooltip-left"
           :class="sideCollapsed ? 'tooltip' : ''"
           data-tip="الشيوخ"
@@ -59,6 +60,7 @@
         </NuxtLink>
 
         <NuxtLink
+          v-if="false"
           class="nav-link tooltip-left"
           :class="sideCollapsed ? 'tooltip' : ''"
           data-tip="الطلاب"
@@ -66,22 +68,9 @@
           v-auto-animate="{ duration: 150 }"
         >
           <span class="min-w-[20px]">
-            <IconsStudentIcon class="w-5 h-5" />
-          </span>
-          <p v-if="!sideCollapsed">الطلاب</p>
-        </NuxtLink>
-
-        <NuxtLink
-          class="nav-link tooltip-left"
-          :class="sideCollapsed ? 'tooltip' : ''"
-          data-tip="الطلاب"
-          :to="'/committees'"
-          v-auto-animate="{ duration: 150 }"
-        >
-          <span class="min-w-[20px]">
             <IconsUsersIcon class="w-5 h-5" />
           </span>
-          <p v-if="!sideCollapsed">اللجان</p>
+          <p v-if="!sideCollapsed">الطلاب</p>
         </NuxtLink>
 
         <!-- dropdown list  -->

@@ -19,7 +19,8 @@ export const useUnitsStore = defineStore("useUnitsStore", {
         },
       })
         .then((res) => {
-          this.data = res.response.data;
+          // this.data = res.response.data;
+          this.data = res.response;
           this.meta = res.response.meta;
           return res;
         })

@@ -17,7 +17,6 @@ export const useSheikhStore = defineStore("useSheikhStore", {
 
       $http("/admin/users", {
         params: {
-          role_id: 2,
           ...useRoute().query,
         },
       })
