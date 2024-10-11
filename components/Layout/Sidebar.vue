@@ -22,27 +22,27 @@
         <NuxtLink
           class="nav-link tooltip-left"
           :class="sideCollapsed ? 'tooltip' : ''"
-          data-tip="الروايات"
-          :to="'/rewayat'"
+          data-tip="الوحدات"
+          :to="'/units'"
           v-auto-animate="{ duration: 150 }"
         >
           <span class="min-w-[20px]">
-            <IconsBookIcon class="w-5 h-5" />
+            <IconsBuildingIcon class="w-5 h-5" />
           </span>
-          <p v-if="!sideCollapsed">الروايات</p>
+          <p v-if="!sideCollapsed">الوحدات</p>
         </NuxtLink>
 
         <NuxtLink
           class="nav-link tooltip-left"
           :class="sideCollapsed ? 'tooltip' : ''"
-          data-tip="الكورسات"
-          :to="'/courses'"
+          data-tip="المدن"
+          :to="'/cities'"
           v-auto-animate="{ duration: 150 }"
         >
           <span class="min-w-[20px]">
-            <IconsBagIcon class="w-5 h-5" />
+            <IconsBuildingIcon2 class="w-5 h-5" />
           </span>
-          <p v-if="!sideCollapsed">الكورسات</p>
+          <p v-if="!sideCollapsed">المدن</p>
         </NuxtLink>
 
         <NuxtLink

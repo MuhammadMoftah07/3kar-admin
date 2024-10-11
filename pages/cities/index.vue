@@ -1,25 +1,26 @@
 <template>
   <main class="">
-    <ThemeTitle class="mb-6" text="الكورسات" />
-
-    <section class="grid grid-cols-6 mb-1">
-      <ThemeInput
-        class="max-w-xs"
-        title="ابحث بالكورس"
-        type="text"
-        @input="submitWithFilter()"
-        v-model="searchFilter"
-      />
-    </section>
+    <ThemeTitle class="mb-6" text="المدن" />
 
     <ThemeTable
       :headers="headers"
       :items="data"
       :meta="meta"
-      :loading="useCourseStore().loading"
+      :loading="useCitiesStore().loading"
       @current="paginationHandler"
     >
-      <template #status="item"> {{ item.status }} </template>
+      <template #status="item">
+        <span
+          class="px-3 py-0 text-xs rounded-md"
+          :class="
+            item.status == '0'
+              ? 'text-red-100 bg-red-600'
+              : 'text-green-100 bg-green-600'
+          "
+        >
+          {{ item.status == "0" ? "غير مفعل" : "مفعل" }}
+        </span>
+      </template>
 
       <template #active="item">
         <aside class="flex gap-2">
@@ -38,20 +39,12 @@
           <button
             @click="
               (useGlobalStore().activeItem = item),
-                ($modal.value = 'CreateCourse')
+                ($modal.value = 'CreateItem')
             "
             type="button"
             class="action-btn"
           >
             <IconsEditIcon2 class="w-5 h-[18px]" />
-          </button>
-          <button
-            type="button"
-            class="action-btn tooltip"
-            data-tip="التقرير"
-            @click="useRouter().push(`/courses/${item.id}/report`)"
-          >
-            <IconsReportIcon class="w-5 h-[18px]" />
           </button>
 
           <!-- <button type="button" class="del-btn">
@@ -61,10 +54,10 @@
       </template>
     </ThemeTable>
 
-    <CourseCreate v-if="$modal.value == 'CreateCourse'" />
+    <CitiesCreate v-if="$modal.value == 'CreateItem'" />
     <ThemePlusButton
       @click.native="
-        (useGlobalStore().activeItem = null), ($modal.value = 'CreateCourse')
+        (useGlobalStore().activeItem = null), ($modal.value = 'CreateItem')
       "
     />
   </main>
@@ -77,10 +70,10 @@ definePageMeta({
 // const value = ref("test");
 const $t = useI18n().t;
 const loading = ref(true);
-await useCourseStore().fetchData();
+await useCitiesStore().fetchData();
 loading.value = false;
-const data = computed(() => useCourseStore().data);
-const meta = computed(() => useCourseStore().meta);
+const data = computed(() => useCitiesStore().data);
+const meta = computed(() => useCitiesStore().meta);
 function paginationHandler($event) {
   useRouter()
     .push({
@@ -91,22 +84,16 @@ function paginationHandler($event) {
       },
     })
     .then(() => {
-      useCourseStore().fetchData();
+      useCitiesStore().fetchData();
     });
 }
 
 const headers = computed(() => {
   return [
-    { text: $t("ID"), value: "id" },
-    { text: $t("title"), value: "title" },
-    // { text: "ID", value: "id", width: 100 },
-    { text: $t("rewaya"), value: "rewaya.title" },
-    { text: $t("sheikh"), value: "teacher.name" },
-    { text: $t("description"), value: "desc" },
+    { text: "ID", value: "id" },
+    { text: $t("name"), value: "name" },
     // { text: $t("status"), value: "status" },
-    { text: $t("activation"), value: "active" },
     { text: $t("actions"), value: "actions" },
-    // { text: "عدد الطلاب", value: "student_count" },
   ];
 });
 
@@ -122,15 +109,15 @@ function getFilterdData() {
       },
     })
     .then(() => {
-      useCourseStore().fetchData();
+      useCitiesStore().fetchData();
     });
 }
 const submitWithFilter = useDebounceFunc(getFilterdData, 1200);
 async function activeHandler(id: number, value: any) {
-  useCourseStore().loading = true;
+  useCitiesStore().loading = true;
   await $http(`/admin/course/activation/${id}?active=${value}`);
-  useCourseStore().loading = false;
-  useCourseStore().fetchData();
+  useCitiesStore().loading = false;
+  useCitiesStore().fetchData();
   useToast().showSuccess();
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <main class="">
-    <ThemeTitle class="mb-6" text="الروايات" />
+    <ThemeTitle class="mb-6" text="الوحدات" />
     <ThemeTable
       :items="data"
       :headers="headers"
@@ -42,14 +42,14 @@ definePageMeta({
 
 const $t = useI18n().t;
 const loading = ref(true);
-await useRewayaStore().fetchData();
+await useUnitsStore().fetchData();
 loading.value = false;
-const data = computed(() => useRewayaStore().data);
+const data = computed(() => useUnitsStore().data);
 
 const headers = computed(() => {
   return [
     { text: $t("ID"), value: "id" },
-    { text: $t("title"), value: "title" },
+    { text: $t("name"), value: "unit_name" },
     // { text: "ID", value: "id", width: 100 },
     // { text: $t("status"), value: "status" },
     { text: $t("actions"), value: "actions" },

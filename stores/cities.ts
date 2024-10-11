@@ -1,8 +1,9 @@
-export const useRewayaStore = defineStore("useRewayaStore", {
+export const useCitiesStore = defineStore("useCitiesStore", {
   state: () => {
     return reactive({
       data: [],
       meta: {},
+      loading: false,
     });
   },
 
@@ -12,18 +13,20 @@ export const useRewayaStore = defineStore("useRewayaStore", {
 
   actions: {
     fetchData() {
-      $http("/rewaya", {
+      this.loading = true;
+      $http("/admin/cities", {
         params: {
-          per_page: 99,
           ...useRoute().query,
         },
       })
         .then((res) => {
           this.data = res.response.data;
           this.meta = res.response.meta;
+          this.loading = false;
           return res;
         })
         .catch((err) => {
+          this.loading = false;
           useToast().errorHandler(err);
         });
     },

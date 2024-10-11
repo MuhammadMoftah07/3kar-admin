@@ -1,9 +1,8 @@
-export const useCourseStore = defineStore("useCourseStore", {
+export const useUnitsStore = defineStore("useUnitsStore", {
   state: () => {
     return reactive({
       data: [],
       meta: {},
-      loading: false,
     });
   },
 
@@ -13,20 +12,18 @@ export const useCourseStore = defineStore("useCourseStore", {
 
   actions: {
     fetchData() {
-      this.loading = true;
-      $http("/admin/courses", {
+      $http("/admin/unit", {
         params: {
+          per_page: 99,
           ...useRoute().query,
         },
       })
         .then((res) => {
           this.data = res.response.data;
           this.meta = res.response.meta;
-          this.loading = false;
           return res;
         })
         .catch((err) => {
-          this.loading = false;
           useToast().errorHandler(err);
         });
     },

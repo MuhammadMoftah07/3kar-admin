@@ -6,7 +6,7 @@
       :headers="headers"
       :items="data"
       :meta="meta"
-      :loading="useCourseStore().loading"
+      :loading="useCitiesStore().loading"
       @current="paginationHandler"
     >
       <template #status="item"> {{ item.status }} </template>

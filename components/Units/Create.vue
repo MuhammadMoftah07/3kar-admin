@@ -51,7 +51,7 @@ const submit = () => {
     },
   })
     .then(() => {
-      useRewayaStore().fetchData();
+      useUnitsStore().fetchData();
       useToast().showSuccess();
       useNuxtApp().$closeModal();
     })
@@ -69,7 +69,7 @@ const edit = () => {
     },
   })
     .then(() => {
-      useRewayaStore().fetchData();
+      useUnitsStore().fetchData();
       useToast().showSuccess();
       useNuxtApp().$closeModal();
     })
