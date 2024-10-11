@@ -1,0 +1,132 @@
+<template>
+  <!-- Container -->
+  <main class="max-w-4xl p-6 mx-auto bg-white" dir="rtl">
+    <!-- Header -->
+    <aside class="flex items-center justify-between py-6">
+      <img src="https://via.placeholder.com/150" alt="Logo" class="h-16" />
+      <div class="grid gap-3">
+        <p class="font-medium">نعمل بشغف لنتميز.. ونفخر ونفخر بخدمتكم</p>
+        <h2 class="text-xl font-bold">شركة كهرباء الغربية للتجارة ش.ذ.م.م</h2>
+        <p class="font-medium">مبيعات التوزيع مكة - المملكة العربية السعودية</p>
+      </div>
+    </aside>
+
+    <section
+      class="flex items-center justify-between py-10 text-2xl font-medium text-slate-600"
+    >
+      <h1 class="">فاتورة ضريبة</h1>
+      <h1 class="">Tax Invoice</h1>
+    </section>
+
+    <!-- Invoice Info -->
+    <section class="pb-6">
+      <div class="grid grid-cols-2 gap-4 mb-4">
+        <div
+          class="flex items-center justify-between p-3 font-bold border rounded-md border-slate-500"
+        >
+          <p class="">رقم الفاتورة</p>
+          <p class="">INVTW/2024/00880</p>
+          <p>Invoice Number</p>
+        </div>
+        <div
+          class="flex items-center justify-between p-3 font-bold border rounded-md border-slate-500"
+        >
+          <p class="">تاريخ الفاتورة</p>
+          <p class="">19/9/2024</p>
+          <p>Invoice Date</p>
+        </div>
+
+        <div
+          class="flex items-center justify-between p-3 font-bold border rounded-md border-slate-500"
+        >
+          <p class="font-bold">المورد</p>
+          <p>Seller</p>
+        </div>
+
+        <div
+          class="flex items-center justify-between p-3 font-bold border rounded-md border-slate-500"
+        >
+          <p class="font-bold">العميل</p>
+          <p>Client</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4 mb-4">
+        <div class="p-4 border">
+          <img
+            src="https://via.placeholder.com/100"
+            alt="QR Code"
+            class="w-24 h-24 mb-4"
+          />
+          <p>شركة كهرباء الغربية للتجارة</p>
+          <p>شركة ذات مسؤولية محدودة</p>
+          <p>4031066450</p>
+          <p>310219433600003</p>
+          <p>المملكة العربية السعودية</p>
+          <p>مكة المكرمة</p>
+          <p>طريق المسجد الحرام - حي المرسلات</p>
+          <p>189-24247</p>
+          <p>+966920024290</p>
+        </div>
+
+        <div class="p-4 border">
+          <p>شركة زايد البلد للتجارة</p>
+          <p>4025065504</p>
+          <p>311083481300003</p>
+          <p>مكة المكرمة 24352 شارع الشوقية</p>
+          <p>+966054590850</p>
+          <p>110093</p>
+          <p>70,353.05</p>
+          <p>S13842</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Table -->
+    <table class="min-w-full mb-4 table-auto">
+      <thead>
+        <tr class="bg-gray-200">
+          <th class="px-4 py-2">No</th>
+          <th class="px-4 py-2">Description</th>
+          <th class="px-4 py-2">Quantity</th>
+          <th class="px-4 py-2">Unit Price</th>
+          <th class="px-4 py-2">Amount</th>
+          <th class="px-4 py-2">VAT</th>
+          <th class="px-4 py-2">Total Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Example row -->
+        <tr>
+          <td class="px-4 py-2 border">1</td>
+          <td class="px-4 py-2 border">Item Description</td>
+          <td class="px-4 py-2 border">1</td>
+          <td class="px-4 py-2 border">100.00</td>
+          <td class="px-4 py-2 border">100.00</td>
+          <td class="px-4 py-2 border">15.00</td>
+          <td class="px-4 py-2 border">115.00</td>
+        </tr>
+        <!-- Add more rows as needed -->
+      </tbody>
+    </table>
+
+    <!-- Totals -->
+    <div class="flex justify-end">
+      <div class="text-right">
+        <p>Subtotal: 31,104.00 SR</p>
+        <p>VAT: 4,665.60 SR</p>
+        <p class="font-bold">Total: 35,769.60 SR</p>
+      </div>
+    </div>
+  </main>
+</template>
+
+<script lang="ts" setup></script>
+
+<style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
+
+* {
+  font-family: "Tajawal", sans-serif;
+}
+</style>

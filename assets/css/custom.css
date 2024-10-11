@@ -1,0 +1,307 @@
+/* @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap");
+
+/* tailwind layers  */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* --appFont: "IBM Plex Sans Arabic", sans-serif; */
+  --appFont: "Cairo", sans-serif;
+  direction: rtl;
+}
+:root:dir(rtl) {
+  --appFont: "Cairo", sans-serif;
+}
+
+/*  remove white  scrollbar-gutter */
+html:has(.drawer-toggle:checked) {
+  scrollbar-gutter: unset !important;
+}
+:root:has(
+    :is(
+        .modal-open,
+        .\!modal:target,
+        .modal-toggle:checked + .\!modal,
+        .\!modal[open]
+      )
+  ) {
+  scrollbar-gutter: unset !important;
+}
+@layer base {
+  html,
+  body {
+    font-family: var(--appFont);
+    scroll-behavior: smooth;
+  }
+}
+
+code{
+  @apply text-xs whitespace-pre-wrap
+}
+@layer components {
+  .scrollSmaller::-webkit-scrollbar {
+    @apply w-[1.5px] xl:w-[2px] h-3;
+  }
+  .btn {
+    @apply min-h-0 capitalize border-none text-slate-50;
+  }
+
+  /* buttons hover/focus/active effects */
+  .btn-effects {
+    @apply cursor-pointer  duration-150 hover:!shadow-slate-200  hover:shadow-lg hover:translate-x-[-1px] hover:translate-y-[-1px];
+  }
+
+  /* inputs */
+  .input {
+    @apply w-full p-2 text-sm h-[37.6px] font-semibold bg-white border rounded-lg shadow-inner hover:bg-slate-50 border-slate-200 text-slate-500 focus:border-[#17D69A] focus:outline-none focus:ring-[#17D69A] focus:ring-1;
+  }
+
+ 
+  .click-scale {
+    @apply duration-300 active:scale-95 active:brightness-125;
+  }
+}
+
+/* scrollbar firefox  */
+html,
+body {
+  scrollbar-color: #3a9578 #defff5;
+  scrollbar-width: thin;
+}
+
+/* scrollbar chrome  */
+::-webkit-scrollbar {
+  width: 4.5px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-emerald-50;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply shadow-inner cursor-pointer bg-emerald-500/90 hover:bg-emerald-400;
+}
+
+::selection {
+  @apply bg-[#5884E8]/10;
+}
+::-moz-selection {
+  @apply bg-[#5884E8]/10;
+}
+
+.highlighted_text {
+  direction: rtl;
+  @apply border-r border-l border-[#5884E8] border-solid bg-[#5884E8]/10;
+}
+
+/* hide number input arrow  */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* ===== Animations ===== */
+
+/* slidefade  */
+.slide-fade-enter-active {
+  transition: all 0.2s ease-in-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.1s ease-in-out;
+}
+
+.slide-fade-enter,
+.slide-fade-leave-to {
+  transform: translateY(5rem);
+  opacity: 0;
+}
+
+/* fade */
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.2s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* slide-in */
+.slide-in-move {
+  transition: opacity 0.2s ease-out, transform 0.3s ease-out;
+}
+
+.slide-in-leave-active {
+  transition: opacity 0.2s ease-out,
+    transform 0.3s cubic-bezier(0.5, 0, 0.7, 0.4);
+  transition-delay: calc(0.1s * (var(--total) - var(--i)));
+}
+
+.slide-in-enter-active {
+  transition: opacity 0.2s ease-out,
+    transform 0.3s cubic-bezier(0.2, 0.5, 0.1, 1);
+  transition-delay: calc(0.1s * var(--i));
+}
+
+.slide-in-enter,
+.slide-in-leave-to {
+  opacity: 0;
+}
+
+.slide-in-enter {
+  transform: translateX(-1em);
+}
+
+.slide-in-leave-to {
+  transform: translateX(1em);
+}
+
+/* slide-in2 */
+.slide-in2-move {
+  transition: opacity 0.2s ease-out, transform 0.3s ease-out;
+}
+
+.slide-in2-leave-active {
+  transition: opacity 0.1s ease-out,
+    transform 0.1s cubic-bezier(0.5, 0, 0.7, 0.4);
+  transition-delay: calc(0.1s * (var(--total) - var(--i)));
+}
+
+.slide-in2-enter-active {
+  transition: opacity 0.2s ease-out,
+    transform 0.3s cubic-bezier(0.2, 0.5, 0.1, 1);
+  transition-delay: calc(0.1s * var(--i));
+}
+
+.slide-in2-enter,
+.slide-in2-leave-to {
+  opacity: 0;
+}
+
+.slide-in2-enter {
+  transform: translateX(1em);
+}
+
+.slide-in2-leave-to {
+  transform: translateX(-1em);
+}
+
+/* slide-in-Y */
+.slide-in-Y-move {
+  transition: opacity 0.1s ease-out, transform 0.3s ease-out;
+}
+
+.slide-in-Y-leave-active {
+  transition: opacity 0.1s ease-out,
+    transform 0.2s cubic-bezier(0.5, 0, 0.7, 0.4);
+  transition-delay: calc(0.1s * (var(--total) - var(--i)));
+}
+
+.slide-in-Y-enter-active {
+  transition: opacity 0.1s ease-out,
+    transform 0.2s cubic-bezier(0.2, 0.5, 0.1, 1);
+  transition-delay: calc(0.1s * var(--i));
+}
+
+.slide-in-Y-enter,
+.slide-in-Y-leave-to {
+  opacity: 0.4;
+}
+
+.slide-in-Y-enter {
+  transform: translateY(2em);
+}
+
+.slide-in-Y-leave-to {
+  transform: translateY(2em);
+}
+
+/* Directions classes */
+.dir-rtl {
+  direction: rtl;
+}
+.dir-ltr {
+  direction: ltr;
+}
+
+/* Daisyui loading */
+.btn.loading:before {
+  @apply rtl:ml-2;
+}
+
+/* toasted style  */
+.Toastify__toast-body {
+  font-family: var(--appFont);
+}
+.Toastify__toast-container {
+  @apply mt-12;
+}
+
+/* tooltip  */
+.tooltip:before,
+.tooltip:after {
+  @apply z-10;
+}
+
+/* pages title */
+.page-title {
+  @apply mb-5 text-xl font-bold capitalize text-slate-800;
+}
+
+.badge {
+  @apply h-6 md:h-8 bg-[#5884E8] border-none rounded-lg px-2 md:px-3 py-1 md:py-2 bg-opacity-10 font-medium text-[#5884E8] text-xs md:text-sm;
+}
+
+.view-all-btn {
+  @apply text-xs font-semibold md:text-sm text-slate-400 hover:cursor-pointer hover:underline;
+}
+
+.page-container {
+  @apply max-w-5xl 2xl:max-w-7xl;
+}
+
+.validation-msg {
+  @apply inline-block mt-2 text-xs leading-none text-google;
+}
+
+.page-container {
+  @apply p-4;
+}
+
+/* page transitions  */
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.2s;
+}
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  filter: blur(0.5rem);
+}
+
+.btn-theme {
+  @apply text-green-50 bg-theme2 hover:bg-theme1;
+}
+
+.action-btn {
+  @apply h-auto p-[3px] border border-solid rounded-md text-slate-600 border-slate-300 bg-slate-50 btn;
+}
+
+.del-btn {
+  @apply h-auto p-[3px] hover:border-none border rounded-md text-red-500 hover:bg-red-50 border-red-300 bg-slate-50 btn;
+}
+
+.input-title{
+  @apply block px-1 mb-[2px] text-xs font-bold tracking-wide uppercase text-slate-600
+}
