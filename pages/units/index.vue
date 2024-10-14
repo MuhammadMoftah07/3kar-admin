@@ -30,8 +30,8 @@
       </template>
     </ThemeTable>
 
-    <RewayaCreate v-if="$modal.value == 'CreateItem'" />
-    <ThemePlusButton @click.native="$modal.value = 'CreateItem'" />
+    <UnitsCreate v-if="$modal.value == 'CreateItem'" />
+    <!-- <ThemePlusButton @click.native="$modal.value = 'CreateItem'" /> -->
   </main>
 </template>
 

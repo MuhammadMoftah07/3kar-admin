@@ -1,6 +1,6 @@
 <template>
   <main class="">
-    <ThemeTitle class="mb-6" text="البلاد" />
+    <ThemeTitle class="mb-6" text="الدول" />
 
     <ThemeTable
       :headers="headers"

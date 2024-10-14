@@ -3,11 +3,11 @@
     <template #modal-title>
       <span v-if="activeItem?.id"> تعديل </span>
       <span v-else> اضافة </span>
-      روايا
+      وحدة
     </template>
     <template #modal-body>
       <section class="grid gap-2">
-        <ThemeInput title="عنوان الرواية" v-model="title" />
+        <ThemeInput title="العنوان" v-model="title" />
       </section>
     </template>
 
@@ -44,7 +44,7 @@ if (activeItem?.id) {
 
 const submit = () => {
   loading.value = true;
-  $http("/rewaya", {
+  $http("/unit", {
     method: "post",
     body: {
       title: title.value,
@@ -62,7 +62,7 @@ const submit = () => {
 
 const edit = () => {
   loading.value = true;
-  $http(`/rewaya-update/${activeItem.id}`, {
+  $http(`/unit/${activeItem.id}`, {
     method: "post",
     body: {
       title: title.value,
