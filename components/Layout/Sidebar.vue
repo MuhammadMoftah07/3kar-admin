@@ -46,6 +46,19 @@
         </NuxtLink>
 
         <NuxtLink
+          class="nav-link tooltip-left"
+          :class="sideCollapsed ? 'tooltip' : ''"
+          data-tip="الدول"
+          :to="'/countries'"
+          v-auto-animate="{ duration: 150 }"
+        >
+          <span class="min-w-[20px]">
+            <IconsEarthIcon class="w-5 h-5" />
+          </span>
+          <p v-if="!sideCollapsed">الدول</p>
+        </NuxtLink>
+
+        <NuxtLink
           v-if="false"
           class="nav-link tooltip-left"
           :class="sideCollapsed ? 'tooltip' : ''"

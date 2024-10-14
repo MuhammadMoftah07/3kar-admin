@@ -2,6 +2,8 @@
   <div>
     <ThemeTitle text="الرئيسية" />
 
+    <LazyThemeCommingSoon />
+
     <section
       class="grid grid-cols-1 gap-4 mt-6 md:grid-cols-3 xl:grid-cols-4"
     ></section>
