@@ -63,17 +63,10 @@
               />
               <input
                 class="w-full px-4 py-4 text-sm font-medium placeholder-gray-500 bg-gray-100 border border-gray-200 rounded-lg focus:outline-none focus:border-gray-400 focus:bg-white"
-                type="tel"
+                type="email"
                 dir="rtl"
-                pattern="[0-9]{10}"
-                placeholder="التلفون"
-                @input="
-                  $event.target.value = $event.target.value.replace(
-                    /[^0-9]/g,
-                    ''
-                  )
-                "
-                v-model="form.phone"
+                placeholder="البريد الالكتروني"
+                v-model="form.email"
               />
               <input
                 class="w-full px-4 py-4 text-sm font-medium placeholder-gray-500 bg-gray-100 border border-gray-200 rounded-lg focus:outline-none focus:border-gray-400 focus:bg-white"

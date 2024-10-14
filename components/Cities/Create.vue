@@ -9,12 +9,7 @@
     <template #modal-body>
       <section class="grid grid-cols-2 gap-2">
         <ThemeInput title="الاسم" v-model="form.name" />
-        <ThemeInput
-          title="الحالة"
-          v-if="false"
-          type="textarea"
-          v-model="form.status"
-        />
+        <ThemeInput title="الحالة" type="textarea" v-model="form.status" />
 
         <fieldset
           v-if="false"

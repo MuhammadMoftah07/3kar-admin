@@ -92,7 +92,7 @@ const headers = computed(() => {
   return [
     { text: "ID", value: "id" },
     { text: $t("name"), value: "name" },
-    // { text: $t("status"), value: "status" },
+    { text: $t("status"), value: "status" },
     { text: $t("actions"), value: "actions" },
   ];
 });
