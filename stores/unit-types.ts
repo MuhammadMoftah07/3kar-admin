@@ -1,9 +1,9 @@
-export const useSheikhStore = defineStore("useSheikhStore", {
+export const useUnitTypesStore = defineStore("useUnitTypesStore", {
   state: () => {
     return reactive({
       data: [],
       meta: {},
-      loading: true,
+      loading: false,
     });
   },
 
@@ -14,8 +14,7 @@ export const useSheikhStore = defineStore("useSheikhStore", {
   actions: {
     fetchData() {
       this.loading = true;
-
-      $http("/admin/users", {
+      $http("/admin/unit-types", {
         params: {
           ...useRoute().query,
         },

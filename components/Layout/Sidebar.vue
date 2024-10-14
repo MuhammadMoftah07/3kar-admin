@@ -40,7 +40,7 @@
           v-auto-animate="{ duration: 150 }"
         >
           <span class="min-w-[20px]">
-            <IconsBuildingIcon2 class="w-5 h-5" />
+            <IconsEarthIcon class="w-5 h-5" />
           </span>
           <p v-if="!sideCollapsed">المدن</p>
         </NuxtLink>
@@ -59,89 +59,43 @@
         </NuxtLink>
 
         <NuxtLink
-          v-if="false"
           class="nav-link tooltip-left"
           :class="sideCollapsed ? 'tooltip' : ''"
-          data-tip="الشيوخ"
-          :to="'/sheikh'"
+          data-tip="انواع الوحدة"
+          :to="'/unit-types'"
           v-auto-animate="{ duration: 150 }"
         >
           <span class="min-w-[20px]">
-            <IconsTeacherIcon class="w-5 h-5" />
+            <IconsBuildingIcon2 class="w-5 h-5" />
           </span>
-          <p v-if="!sideCollapsed">الشيوخ</p>
+          <p v-if="!sideCollapsed">انواع الوحدة</p>
         </NuxtLink>
 
         <NuxtLink
-          v-if="false"
           class="nav-link tooltip-left"
           :class="sideCollapsed ? 'tooltip' : ''"
-          data-tip="الطلاب"
-          :to="'/students'"
+          data-tip="تفاصيل الوحدة"
+          :to="'/unit-details'"
           v-auto-animate="{ duration: 150 }"
         >
           <span class="min-w-[20px]">
-            <IconsUsersIcon class="w-5 h-5" />
+            <IconsCalculatorIcon class="w-5 h-5" />
           </span>
-          <p v-if="!sideCollapsed">الطلاب</p>
+          <p v-if="!sideCollapsed">تفاصيل الوحدة</p>
         </NuxtLink>
 
-        <!-- dropdown list  -->
-        <div class="dropdown dropdown-right dropdown-end" v-if="false">
-          <div tabindex="0" role="button" class="nav-link">
-            <span class="min-w-[20px]">
-              <IconsReportIcon class="w-5 h-5" />
-            </span>
-            التقارير
-          </div>
-          <ul
-            tabindex="0"
-            class="dropdown-content menu divide-y divide-theme3 from-theme1 bg-gradient-to-bl to-theme3 rounded-box z-[1] w-52 p-2 shadow"
-          >
-            <li
-              @click="
-                $router.push({
-                  path: '/reports/students',
-                  query: {
-                    model: 'students',
-                  },
-                })
-              "
-            >
-              <a>
-                <p>الطلاب</p>
-              </a>
-            </li>
-            <li
-              @click="
-                $router.push({
-                  path: '/reports/teachers',
-                  query: {
-                    model: 'teachers',
-                  },
-                })
-              "
-            >
-              <a>
-                <p>الشيوخ</p>
-              </a>
-            </li>
-            <li
-              @click="
-                $router.push({
-                  path: '/reports/courses',
-                  query: {
-                    model: 'courses',
-                  },
-                })
-              "
-            >
-              <a>
-                <p>الكورسات</p>
-              </a>
-            </li>
-          </ul>
-        </div>
+        <NuxtLink
+          class="nav-link tooltip-left"
+          :class="sideCollapsed ? 'tooltip' : ''"
+          data-tip="انواع المعاملة"
+          :to="'/process-types'"
+          v-auto-animate="{ duration: 150 }"
+        >
+          <span class="min-w-[20px]">
+            <IconsBagIcon class="w-5 h-5 !text-slate-50 fill-slate-50" />
+          </span>
+          <p v-if="!sideCollapsed">انواع المعاملة</p>
+        </NuxtLink>
       </div>
 
       <hr class="my-2 border-white/20" />

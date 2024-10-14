@@ -7,8 +7,4 @@
   </svg>
 </template>
 
-<script>
-export default {
-  name: "UilBagAlt",
-};
-</script>
+<script></script>

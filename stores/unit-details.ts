@@ -1,9 +1,9 @@
-export const useStudentStore = defineStore("useStudentStore", {
+export const useUnitDetailsStore = defineStore("useUnitDetailsStore", {
   state: () => {
     return reactive({
       data: [],
       meta: {},
-      loading: true,
+      loading: false,
     });
   },
 
@@ -14,7 +14,7 @@ export const useStudentStore = defineStore("useStudentStore", {
   actions: {
     fetchData() {
       this.loading = true;
-      $http("/admin/users", {
+      $http("/admin/unit-details", {
         params: {
           ...useRoute().query,
         },
