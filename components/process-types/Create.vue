@@ -1,0 +1,97 @@
+<template>
+  <LayoutModal modal-classes="max-w-2xl">
+    <template #modal-title>
+      <span v-if="activeItem?.id"> تعديل </span>
+      <span v-else> انشاء </span>
+      نوع معاملة
+    </template>
+
+    <template #modal-body>
+      <section class="grid grid-cols-2 gap-2">
+        <ThemeInput title="الاسم" v-model="form.name" />
+        <ThemeInput
+          title="الحالة"
+          type="select"
+          :options="statusArray"
+          selectLabel="name"
+          selectValue="value"
+          v-model="form.status"
+        />
+      </section>
+    </template>
+
+    <template #modal-footer>
+      <footer class="gap-2 modal-action">
+        <button
+          class="btn h-9 btn-theme"
+          :disabled="loading"
+          @click="activeItem ? edit() : submit()"
+        >
+          <span v-if="loading" class="loading loading-spinner"></span>
+          إتمام
+        </button>
+        <button
+          @click="$modal.value = false"
+          class="font-medium btn h-9 btn-ghost text-slate-700"
+        >
+          اغلاق
+        </button>
+      </footer>
+    </template>
+  </LayoutModal>
+</template>
+
+<script lang="ts" setup>
+const statusArray = [
+  { name: "مفعل", value: "1" },
+  { name: "غير مفعل", value: "0" },
+];
+
+let form = reactive({});
+const loading = ref(false);
+
+const activeItem = useGlobalStore().activeItem;
+
+// init component
+if (activeItem?.id) {
+  form.name = activeItem.name;
+  form.status = activeItem.status;
+}
+const submit = () => {
+  let payload = { ...form };
+  payload = useObjToFormData(payload);
+  loading.value = true;
+  $http("/admin/process-types", {
+    method: "post",
+    body: payload,
+  })
+    .then(() => {
+      useProcessTypesStore().fetchData();
+      useToast().showSuccess("تمت العملية بنجاح");
+      useNuxtApp().$closeModal();
+    })
+    .catch((err) => {
+      loading.value = false;
+      useToast().errorHandler(err);
+    });
+};
+
+const edit = () => {
+  let payload = { ...form };
+  payload = useObjToFormData(payload);
+  loading.value = true;
+  $http(`/admin/process-types/${activeItem.id}`, {
+    method: "post",
+    body: payload,
+  })
+    .then(() => {
+      useProcessTypesStore().fetchData();
+      useToast().showSuccess("تمت العملية بنجاح");
+      useNuxtApp().$closeModal();
+    })
+    .catch((err) => {
+      loading.value = false;
+      useToast().errorHandler(err);
+    });
+};
+</script>
